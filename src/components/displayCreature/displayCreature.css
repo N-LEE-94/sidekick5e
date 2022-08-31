@@ -1,4 +1,8 @@
 /* Style the buttons that are used to open and close the accordion panel */
+.creatureContainer {
+  width: 100vw;
+}
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -20,6 +24,11 @@
 .panel {
   padding: 0 18px;
   background-color: white;
-  display: none;
+  color: black;
+  display: block;
   overflow: hidden;
+}
+
+.noShow {
+  display: none;
 }
