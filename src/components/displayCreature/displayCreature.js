@@ -11,11 +11,25 @@ export function DisplayCreature() {
       else if (activeIndex !==index && activeIndex !== null) {setActiveIndex(index)}
   }
 
+  function getCreatureData(creature, index) {
+    const creatureName = creature.toString().toLowerCase().replace(/[\n\r\s\t]+/g, '-')
+    if (activeIndex !== index) {
+      const headers = {'Accept': 'application/json'}
+      async function fetchData() {
+        const rawStats = await fetch(`https://api.open5e.com/monsters/${creatureName}/`, 
+          {headers: headers})
+        const creatureData = await rawStats.json();
+        console.log(creatureData)
+      };
+      fetchData();
+    }
+  };
+
   return creatureNames.map((creature, index) => {
     const isActive = index === activeIndex;
     return (
       <div className="creatureContainer" key={creature.id}>
-        <button className="accordion" key={creature.name} onClick={() => toggleActiveIndex(index)}>
+        <button className="accordion" key={creature.name} onClick={() => {toggleActiveIndex(index); getCreatureData(creature.name, index);}}>
           {creature.name}
         </button>
         <div className={`${isActive ? "panel" : "noShow"}`} key={index}>
@@ -26,6 +40,6 @@ export function DisplayCreature() {
   })
 }
 
-// onClick should also make a get request to the open5e API
-
-https://api.open5e.com/monsters/${creature.name}/
+// local storage: https://blog.logrocket.com/using-localstorage-react-hooks/
+// passing state: https://www.pluralsight.com/guides/passing-state-of-parent-to-child-component-as-props
+// 
