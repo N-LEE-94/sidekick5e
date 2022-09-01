@@ -25,3 +25,7 @@ export function DisplayCreature() {
     )
   })
 }
+
+// onClick should also make a get request to the open5e API
+
+https://api.open5e.com/monsters/${creature.name}/

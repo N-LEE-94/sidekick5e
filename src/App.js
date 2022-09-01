@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import NavBar from './components/navbar/navbar'
+import NavBar from './components/navbar/Navbar'
 import SelectCreature from './pages/selectCreature/selectCreature'
 // import SelectClassLevel from './pages/selectClassLevel/selectClassLevel'
 // import CharacterSheet from './pages/characterSheet/characterSheet'
