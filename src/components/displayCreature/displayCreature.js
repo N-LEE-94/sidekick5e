@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import creatureNames from "../../lib/creatureNames.js";
 import './displayCreature.css'
+import { StatBlock } from "./StatBlock.js";
 
 export function DisplayCreature() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [activeCreature, setActiveCreature] = useState('');
 
   function toggleActiveIndex(index) {
     if (activeIndex === null){setActiveIndex(index)}
       else if (activeIndex === index) {setActiveIndex(null)}
-      else if (activeIndex !==index && activeIndex !== null) {setActiveIndex(index)}
+      else if (activeIndex !==index) {setActiveIndex(index)}
   }
-
+  
   function getCreatureData(creature, index) {
     const creatureName = creature.toString().toLowerCase().replace(/[\n\r\s\t]+/g, '-')
     if (activeIndex !== index) {
@@ -19,11 +21,16 @@ export function DisplayCreature() {
         const rawStats = await fetch(`https://api.open5e.com/monsters/${creatureName}/`, 
           {headers: headers})
         const creatureData = await rawStats.json();
-        console.log(creatureData)
+        console.log(creatureData);
+        setActiveCreature(creatureData);
       };
       fetchData();
     }
   };
+
+  useEffect(() => {
+    
+  });
 
   return creatureNames.map((creature, index) => {
     const isActive = index === activeIndex;
@@ -33,7 +40,7 @@ export function DisplayCreature() {
           {creature.name}
         </button>
         <div className={`${isActive ? "panel" : "noShow"}`} key={index}>
-          <p>{creature.name}</p>
+          <StatBlock creatureData={activeCreature}/>
         </div>
       </div>
     )
