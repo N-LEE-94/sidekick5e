@@ -1,11 +1,11 @@
 import React from 'react';
 
-export function StatBlock(creatureData) {
+export function StatBlock(allCreatures) {
   
   return(
     <>
-      <p>{creatureData.name}</p>
-      <p>{creatureData.challenge_rating}</p>
+      <p>{allCreatures.name}</p>
+      <p>{allCreatures.challenge_rating}</p>
     </>
   )
 }

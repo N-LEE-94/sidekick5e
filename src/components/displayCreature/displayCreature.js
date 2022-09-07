@@ -34,12 +34,9 @@ export function DisplayCreature() {
         const challengeRatingHalf = await crHalf.json();
         let halfArray = [...challengeRatingHalf.results]
         allCreatures.push(...halfArray)
-        
       };
       fetchAll();
-      
   }fetchCreatures(); 
-  console.log(allCreatures);
   
   function toggleActiveIndex(index) {
     if (activeIndex === null){setActiveIndex(index)}
@@ -47,16 +44,17 @@ export function DisplayCreature() {
       else if (activeIndex !==index) {setActiveIndex(index)}
   }
 
-  
+  //new variable that alphabetically orders 'allCreatures'
+  console.log(allCreatures);
   return allCreatures.map((creature, index) => {
     const isActive = index === activeIndex;
     return (
-      <div className="creatureContainer" key={creature.slug}>
-        <button className="accordion" key={creature.name} onClick={() => {toggleActiveIndex(index); ;}}>
-          {creature.name}
+      <div className="creatureContainer" key={creature.index.slug}>
+        <button className="accordion" key={creature.index.name} onClick={() => {toggleActiveIndex(index); ;}}>
+          {creature.index.name}
         </button>
         <div className={`${isActive ? "panel" : "noShow"}`} key={index}>
-          <StatBlock creatureData={activeCreature}/>
+          <StatBlock allCreatures={allCreatures}/>
         </div>
       </div>
     )
