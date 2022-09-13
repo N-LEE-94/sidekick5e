@@ -7,9 +7,7 @@ export function DisplayCreature() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchInput, setSearchInput] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
-  const [selectedCreature, setSelectedCreature] = useState();
 
-  
   useEffect(() => {
     const headers = {'Accept': 'application/json'}
       async function fetchAll() {
@@ -46,28 +44,11 @@ export function DisplayCreature() {
     if (activeIndex === null){setActiveIndex(index)}
       else if (activeIndex === index) {setActiveIndex(null)}
       else if (activeIndex !==index) {setActiveIndex(index)}
-  }
-
-  
-  
-  // const searchItems = (searchValue) => {
-  //   setSearchInput(searchValue)
-  //   console.log(searchValue)
-  // }
-  
-  
-  // function filterButton() {
-  //   const filteredData = allCreatures.filter((item) => {
-  //   return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
-  //   })
-  //   console.log(filteredData);
-  //   setFilteredResults(filteredData)
-  // }
-
+  };
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue)
-  }
+  };
 
   function filterButton() {
     if (searchInput !== '') {
@@ -80,9 +61,8 @@ export function DisplayCreature() {
     else {
         setFilteredResults(allCreatures)
     }
-  }
+  };
 
-  
   return (
     <>
       <input icon='search' placeholder='...'
@@ -99,7 +79,7 @@ export function DisplayCreature() {
                 {creature.name}
               </button>
               <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
-                <StatBlock allCreatures={allCreatures}/>
+                <StatBlock creature={creature}/>
               </div>
             </div>
         )
@@ -113,7 +93,7 @@ export function DisplayCreature() {
                 {creature.name}
               </button>
               <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
-                <StatBlock selectedCreature={selectedCreature}/>
+                <StatBlock creature={creature}/>
               </div>
             </div>
         )

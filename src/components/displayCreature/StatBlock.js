@@ -1,26 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export function StatBlock(selectedCreature) {
-  // const [activeCreature, setActiveCreature] = useState([]);
-  // const creature = JSON.stringify(allCreatures)
-  // let index = JSON.stringify(activeIndex)
-  // console.log(index)
-
+export function StatBlock({ creature }) {
+  console.log(creature)
   return(
     <>
-      <p>test</p>
+      <p>{creature.name}</p>
+      <div>
+        <p>STR {creature.strength}</p>
+        <p>DEX {creature.dexterity}</p>
+        <p>CON {creature.constitution}</p>
+        <p>INT {creature.intelligence}</p>
+        <p>WIS {creature.wisdom}</p>
+        <p>CHA {creature.charisma}</p>
+      </div>
     </>
   )
 }
 
-//pass down active index creature
+
 //display its data as elements (big job)
 //css? to make it readable while working on it?
-
-
-// creature = object
-
-// THINGS WE TRIED:
-// creating state that combines allCreatures and index, to be passed down to the StatBlock Component.
-// BUT, the prop kept being empty ????????????????????
-// GOOGLE THIS PLZ
