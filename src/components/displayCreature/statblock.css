@@ -1,0 +1,64 @@
+.statContainer {
+  display: block;
+  margin-bottom: 4vh;
+  font-size: 1.2rem;
+}
+
+
+.ac-hp-speed {
+  display: block;
+}
+
+.ac {
+  display: flex;
+}
+.ac > p {
+  margin: 0px;
+}
+.ac-tag {
+  padding-right: 8px;
+  font-weight: bold;
+}
+.hp {
+  display: flex;
+}
+.hp > p {
+  margin: 0px;
+}
+.hp-tag {
+  padding-right: 8px;
+  font-weight: bold;
+}
+.speed {
+  display: flex;
+}
+.speed > p {
+  margin: 0px;
+}
+.speed-tag {
+  padding-right: 8px;
+  font-weight: bold;
+}
+
+.size-type-alignment {
+  display: flex;
+  flex-direction: row;
+  font-style: italic;
+}
+.size-type-alignment > p {
+  margin: 0px;
+}
+.size {
+  padding-right: 8px;
+}
+.type {
+  padding-right: 8px;
+}
+
+.ability-scores {
+  display: flex;
+  flex-direction: row;
+}
+.ability-scores > p {
+  margin: 0px;
+}

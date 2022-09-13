@@ -11,7 +11,7 @@
   width: 80vw;
   text-align: center;
   border: none;
-  transition: 0.4s;
+  font-size: 1.3rem;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
