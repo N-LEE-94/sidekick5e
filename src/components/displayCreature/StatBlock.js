@@ -1,7 +1,6 @@
 import React from 'react';
 
 export function StatBlock({ creature }) {
-  console.log(creature)
   return(
     <>
       <p>{creature.name}</p>
