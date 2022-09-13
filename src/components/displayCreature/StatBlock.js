@@ -1,7 +1,8 @@
 import React from 'react';
 
+
 export function StatBlock({ creature }) {
-  return(
+  return (
     <>
       <p>{creature.name}</p>
       <div>
@@ -13,7 +14,7 @@ export function StatBlock({ creature }) {
         <p>CHA {creature.charisma}</p>
       </div>
     </>
-  )
+  );
 }
 
 
