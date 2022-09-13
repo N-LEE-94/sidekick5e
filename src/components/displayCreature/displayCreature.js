@@ -3,9 +3,10 @@ import './displayCreature.css'
 import { StatBlock } from "./StatBlock.js";
 
 export function DisplayCreature() {
+  const [allCreatures, setAllCreatures] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeCreature, setActiveCreature] = useState('');
-  const [allCreatures, setAllCreatures] = useState([]);
+
   
   useEffect(() => {
     const headers = {'Accept': 'application/json'}
@@ -61,4 +62,6 @@ export function DisplayCreature() {
 }
 
 // local storage: https://blog.logrocket.com/using-localstorage-react-hooks/
-// passing state: https://www.pluralsight.com/guides/passing-state-of-parent-to-child-component-as-props
+
+
+//search function: state that prevents creatures that don't match the search term from being mapped.
