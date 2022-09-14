@@ -24,6 +24,9 @@
 
 .ac-hp-speed {
   display: block;
+  border-bottom: solid;
+  border-width: 1px;
+  padding-bottom: .5rem;
 }
 
 .ac {
@@ -58,10 +61,42 @@
 }
 
 
-.ability-scores {
+.abl-scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: solid;
+  border-width: 1px;
+  padding-bottom: .5rem;
+}
+.abl-scores > p {
+  margin: 0px;
+}
+
+.abl-numbers {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
-.ability-scores > p {
+.abl-tag {
+ margin-right: .3rem;
+}
+.score {
+  margin-right: .3rem;
+}
+.abl-mod > p {
   margin: 0px;
+  font-size: 1.05rem;
+}
+.saving-throws {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  font-weight: bold;
+}
+.save-stat {
+  margin: 0px;
+  margin-left: .7rem;
+}
+p .save-stat {
+  font-weight: 400;
 }
