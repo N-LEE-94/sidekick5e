@@ -5,6 +5,23 @@
 }
 
 
+.size-type-alignment {
+  display: flex;
+  flex-direction: row;
+  font-style: italic;
+  justify-content: center;
+}
+.size-type-alignment > p {
+  margin: 0px;
+}
+.size {
+  padding-right: 8px;
+}
+.type {
+  padding-right: 8px;
+}
+
+
 .ac-hp-speed {
   display: block;
 }
@@ -40,20 +57,6 @@
   font-weight: bold;
 }
 
-.size-type-alignment {
-  display: flex;
-  flex-direction: row;
-  font-style: italic;
-}
-.size-type-alignment > p {
-  margin: 0px;
-}
-.size {
-  padding-right: 8px;
-}
-.type {
-  padding-right: 8px;
-}
 
 .ability-scores {
   display: flex;

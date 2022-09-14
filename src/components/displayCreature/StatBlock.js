@@ -64,7 +64,7 @@ export function StatBlock({ creature }) {
         <div className="ac-hp-speed">
           <div className="ac">
             <p className="ac-tag">Armor Class</p>
-            <p className="ac-stat">{creature.armor_class} ({creature.armor_desc})</p>
+            <p className="ac-stat">{creature.armor_class} ({creature.armor_desc})</p>           
           </div>
           <div className="hp">
             <p className="hp-tag">Hit Points</p>
