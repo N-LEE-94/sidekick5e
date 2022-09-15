@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import './statblock.css'
 
 export function StatBlock({ creature }) {
@@ -83,7 +83,12 @@ export function StatBlock({ creature }) {
         </div>
 
         <div className="skills-immunities">
-            {creature.strength_save || creature.dexterity_save || creature.constitution_save || creature.intelligence_save || creature.wisdom_save || creature.charisma_save ? 
+            {creature.strength_save ||
+            creature.dexterity_save ||
+            creature.constitution_save ||
+            creature.intelligence_save ||
+            creature.wisdom_save ||
+            creature.charisma_save ? 
             <p className="saving-throws">Saving Throws 
               {creature.strength_save ?
               <div className ="save-stat"><p>Str +{creature.strength_save}</p></div>
@@ -106,24 +111,7 @@ export function StatBlock({ creature }) {
             </p>
             : null}
 
-            {creature.skills.acrobatics
-            || creature.skills.animal_handling
-            || creature.skills.arcana
-            || creature.skills.athletics
-            || creature.skills.deception
-            || creature.skills.history
-            || creature.skills.insight
-            || creature.skills.intimidation
-            || creature.skills.investigation
-            || creature.skills.medicine
-            || creature.skills.nature
-            || creature.skills.perception
-            || creature.skills.performance
-            || creature.skills.persuasion
-            || creature.skills.religion
-            || creature.skills.sleight_of_hand
-            || creature.skills.stealth
-            || creature.skills.survival ? 
+            {Object.keys(creature.skills).length !== 0 ? 
               <div className="flex-wrapper"> 
               <p className="bold">Skills</p>
               {Object.keys(creature.skills).map((skill) => {
@@ -152,7 +140,7 @@ export function StatBlock({ creature }) {
             : null}
             {creature.condition_immunities ?
               <div className="flex-wrapper">
-                <p className="bold">Condition Vulnerabilities</p>
+                <p className="bold">Condition Immunities</p>
                 <p className="value">{creature.condition_immunities}</p>
               </div>
             : null}
@@ -180,9 +168,9 @@ export function StatBlock({ creature }) {
           
         </div>
 
-        {/* <div className="actions-wrapper">
+        <div className="actions-wrapper">
 
-        </div> */}
+        </div>
       </div>
     </>
   );
