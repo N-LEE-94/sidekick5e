@@ -35,22 +35,24 @@ export function StatBlock({ creature }) {
 
         <div className="ac-hp-speed">
           <div className="ac">
-            <p className="ac-tag">Armor Class</p>
+            <p className="bold">Armor Class</p>
             <p className="ac-stat">{creature.armor_class}</p>
             {creature.armor_desc ? 
               <p> ({creature.armor_desc})</p>
               : null}          
           </div>
           <div className="hp">
-            <p className="hp-tag">Hit Points</p>
+            <p className="bold">Hit Points</p>
               <p className="hp-stat">{creature.hit_points} ({creature.hit_dice})</p>
           </div>
           <div className="speed">
-            <p className="speed-tag">Speed </p>
+            <p className="bold">Speed </p>
               <p className="speed-stat">{creature.speed.walk} ft.</p>
-
               {creature.speed.fly ? 
               <p>, fly {creature.speed.fly} ft.</p>
+              : null}
+              {creature.speed.hover ? 
+              <p className="hover"> (hover)</p>
               : null}
               {creature.speed.climb ? 
               <p>, climb {creature.speed.climb} ft.</p>
@@ -60,9 +62,6 @@ export function StatBlock({ creature }) {
               : null}
               {creature.speed.burrow ? 
               <p>, burrow {creature.speed.burrow} ft.</p>
-              : null}
-              {creature.speed.hover ? 
-              <p> (hover)</p>
               : null}
               
           </div>
@@ -87,28 +86,103 @@ export function StatBlock({ creature }) {
             {creature.strength_save || creature.dexterity_save || creature.constitution_save || creature.intelligence_save || creature.wisdom_save || creature.charisma_save ? 
             <p className="saving-throws">Saving Throws 
               {creature.strength_save ?
-              <p className ="save-stat">Str +{creature.strength_save}</p>
+              <div className ="save-stat"><p>Str +{creature.strength_save}</p></div>
               : null}
               {creature.dexterity_save ? 
-              <p className ="save-stat">Dex +{creature.dexterity_save}</p>
+                <div className ="save-stat"><p>Dex +{creature.dexterity_save}</p></div>
               : null}
               {creature.constitution_save ? 
-              <p className ="save-stat">Con +{creature.constitution_save}</p>
+                <div className ="save-stat"><p>Con +{creature.constitution_save}</p></div>
               : null}
               {creature.intelligence_save ? 
-              <p className ="save-stat">Int +{creature.intelligence_save}</p>
+                <div className ="save-stat"><p>Int +{creature.intelligence_save}</p></div>
               : null}
               {creature.wisdom_save ? 
-              <p className ="save-stat">Wis +{creature.wisdom_save}</p>
+                <div className ="save-stat"><p>Wis +{creature.wisdom_save}</p></div>
               : null}
               {creature.charisma_save ? 
-              <p className ="save-stat">Cha +{creature.charisma_save}</p>
+                <div className ="save-stat"><p>Cha +{creature.charisma_save}</p></div>
               : null}
             </p>
             : null}
+
+            {creature.skills.acrobatics
+            || creature.skills.animal_handling
+            || creature.skills.arcana
+            || creature.skills.athletics
+            || creature.skills.deception
+            || creature.skills.history
+            || creature.skills.insight
+            || creature.skills.intimidation
+            || creature.skills.investigation
+            || creature.skills.medicine
+            || creature.skills.nature
+            || creature.skills.perception
+            || creature.skills.performance
+            || creature.skills.persuasion
+            || creature.skills.religion
+            || creature.skills.sleight_of_hand
+            || creature.skills.stealth
+            || creature.skills.survival ? 
+              <div className="flex-wrapper"> 
+              <p className="bold">Skills</p>
+              {Object.keys(creature.skills).map((skill) => {
+              return (<p className="skill-value">{skill}</p>);
+              })}
+              </div>
+            : null}
             
+            {creature.damage_vulnerabilities ?
+              <div className="flex-wrapper"> 
+                <p className="bold">Damage Vulnerabilities</p>
+                <p className="value">{creature.damage_vulnerabilities}</p> 
+              </div>
+            : null}
+            {creature.damage_resistances ?
+              <div className="flex-wrapper"> 
+                <p className="bold">Damage Resistances</p>
+                <p className="value">{creature.damage_resistances}</p>
+              </div>
+            : null}
+            {creature.damage_immunities ?
+              <div className="flex-wrapper">
+                <p className="bold">Damage Immunities</p>
+                <p className="value">{creature.damage_immunities}</p>
+              </div>
+            : null}
+            {creature.condition_immunities ?
+              <div className="flex-wrapper">
+                <p className="bold">Condition Vulnerabilities</p>
+                <p className="value">{creature.condition_immunities}</p>
+              </div>
+            : null}
+            {creature.senses ?
+              <div className="flex-wrapper">
+                <p className="bold">Senses</p>
+                <p className="value">{creature.senses}</p>
+              </div>
+            : null}
+            {creature.languages ?
+              <div className="flex-wrapper">
+                <p className="bold">Languages</p>
+                <p className="value">{creature.languages}</p>
+              </div>
+            : null}
+            {creature.challenge_rating ?
+              <div className="flex-wrapper">
+                <p className="bold">Challenge Rating</p>
+                <p className="value">{creature.challenge_rating}</p>
+              </div>
+            : null}
+        </div>
+
+        <div className="abilities-wrapper">
           
         </div>
+
+        {/* <div className="actions-wrapper">
+
+        </div> */}
       </div>
     </>
   );

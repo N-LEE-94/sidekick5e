@@ -3,7 +3,20 @@
   margin-bottom: 4vh;
   font-size: 1.2rem;
 }
-
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+p {
+  margin: 0;
+}
+.bold {
+  font-weight: bold;
+  padding-right: .3rem;
+}
+.value {
+  padding-left: .3rem;
+}
 
 .size-type-alignment {
   display: flex;
@@ -11,9 +24,7 @@
   font-style: italic;
   justify-content: center;
 }
-.size-type-alignment > p {
-  margin: 0px;
-}
+
 .size {
   padding-right: 8px;
 }
@@ -32,33 +43,27 @@
 .ac {
   display: flex;
 }
-.ac > p {
-  margin: 0px;
-}
-.ac-tag {
-  padding-right: 8px;
-  font-weight: bold;
+.ac-stat {
+  padding-left: .3rem;
+  padding-right: .3rem;
 }
 .hp {
   display: flex;
 }
-.hp > p {
-  margin: 0px;
-}
-.hp-tag {
-  padding-right: 8px;
-  font-weight: bold;
+.hp-stat {
+  padding-left: .3rem;
+  padding-right: .3rem;
 }
 .speed {
   display: flex;
 }
-.speed > p {
-  margin: 0px;
+.speed-stat {
+  padding-left: .3rem;
 }
-.speed-tag {
-  padding-right: 8px;
-  font-weight: bold;
+.hover {
+  padding-left: .3rem;
 }
+
 
 
 .abl-scores {
@@ -68,9 +73,6 @@
   border-width: 1px;
   padding-bottom: .5rem;
 }
-.abl-scores > p {
-  margin: 0px;
-}
 
 .abl-numbers {
   display: flex;
@@ -79,13 +81,19 @@
 }
 .abl-tag {
  margin-right: .3rem;
+ font-weight: bold;
 }
 .score {
   margin-right: .3rem;
 }
 .abl-mod > p {
-  margin: 0px;
   font-size: 1.05rem;
+}
+
+.skills-immunities {
+  border-bottom: solid;
+  border-width: 1px;
+  padding-bottom: .5rem;
 }
 .saving-throws {
   display: flex;
@@ -99,4 +107,9 @@
 }
 p .save-stat {
   font-weight: 400;
+}
+
+
+.skill-value {
+  padding-left: .6rem;
 }
