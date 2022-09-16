@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import './displayCreature.css'
+import './displayCreature.css';
 import { StatBlock } from "./StatBlock.js";
+import uniqid from 'uniqid';
 
 export function DisplayCreature() {
   const [allCreatures, setAllCreatures] = useState([]);
@@ -74,11 +75,11 @@ export function DisplayCreature() {
         (filteredResults.map((creature, index) => {
           const isActive = index === activeIndex;
           return (
-            <div className="creatureContainer" key={index}>
-              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
+            <div className="creatureContainer" key={uniqid()}>
+              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={uniqid()} onClick={() => {toggleActiveIndex(index); ;}}>
                 {creature.name}
               </button>
-              <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
+              <div className={`${isActive ? "panel" : "noShow"}`} key={uniqid()}>
                 <StatBlock creature={creature}/>
               </div>
             </div>
@@ -88,11 +89,11 @@ export function DisplayCreature() {
         (allCreatures.map((creature, index) => {
           const isActive = index === activeIndex;
           return (
-            <div className="creatureContainer" key={index}>
-              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
+            <div className="creatureContainer" key={uniqid()}>
+              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={uniqid()} onClick={() => {toggleActiveIndex(index); ;}}>
                 {creature.name}
               </button>
-              <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
+              <div className={`${isActive ? "panel" : "noShow"}`} key={uniqid()}>
                 <StatBlock creature={creature}/>
               </div>
             </div>

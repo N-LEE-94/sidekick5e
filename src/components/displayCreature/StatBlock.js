@@ -1,5 +1,7 @@
 import React from 'react';
-import './statblock.css'
+import './statblock.css';
+import uniqid from 'uniqid';
+
 
 export function StatBlock({ creature }) {
 
@@ -20,53 +22,11 @@ export function StatBlock({ creature }) {
     } else {
       abilityMod = Math.floor(((abilityArray[i] -10) /2)*1)
     }
-    return <div className="abl-mod"><p> ({abilityMod})</p></div>
+    return <div className="abl-mod" key={uniqid()}><p> ({abilityMod})</p></div>
   }};
 
-  // function actionsRender() {
-  //   let actionsArray = creature.actions
-  //   // console.log(actionsArray)
-    
-  //   for (let i = 0; i < actionsArray.length; i++) {
-  //     // let actionName = actionsArray[i]['name']
-  //     // let actionDesc = actionsArray[i]['desc']
-  //     // console.log(actionsArray[i])
-  //     return (
-  //     <div className="action">
-  //       <p className="bold">{actionsArray[i]['name']}</p>
-  //       <p>{actionsArray[i]['desc']}</p>
-  //     </div>
-  //   )}
-  // }
-
-//   let actionsArray = creature.actions
-//   const actionsRender = (array) => {
-//     for (let i = 0; i < array.length; i++) {
-//       return (
-//             <div className="action">
-//               <p className="bold">{array[i]['name']}</p>
-//               <p>{array[i]['desc']}</p>
-//             </div>
-//           )
-// }};
 let actionsVar = creature.actions
 let specialAbilitiesVar = creature.special_abilities
-
-
-
-// iterate(numArr);
-
-//loop through the array
-//map each action name and description to a variable
-//feed variable to the <p></p> elements in the return
-
-
-
-// {Object.keys(creature.skills).map((skill) => {
-//   return (<p className="skill-value">{skill}</p>);
-//   })}
-
-
 
   return (
     <>
@@ -160,8 +120,8 @@ let specialAbilitiesVar = creature.special_abilities
             {Object.keys(creature.skills).length !== 0 ? 
               <div className="flex-wrapper"> 
               <p className="bold">Skills</p>
-              {Object.keys(creature.skills).map((skill) => {
-              return (<p className="skill-value">{skill}</p>);
+              {Object.keys(creature.skills).map((skill, index) => {
+              return (<p className="skill-value" key={uniqid()}>{skill}</p>);
               })}
               </div>
             : null}
@@ -215,9 +175,9 @@ let specialAbilitiesVar = creature.special_abilities
             <div className="abilities-wrapper">
               {Array.from(specialAbilitiesVar).map((abilities) => {
               return (
-                  <div className="ability-action">
-                    <p className="bold">{abilities['name']}</p>
-                    <p className="ability-action-value">{abilities['desc']}</p>
+                  <div className="ability-action" key={uniqid()}>
+                    <p className="bold" key={uniqid()}>{abilities['name']}</p>
+                    <p className="ability-action-value" key={uniqid()}>{abilities['desc']}</p>
                   </div>
                 )})}
             </div>
@@ -227,9 +187,9 @@ let specialAbilitiesVar = creature.special_abilities
         <><p className="actions-header">Actions</p><div className="actions-wrapper">
             {Array.from(actionsVar).map((actions) => {
               return (
-                <div className="ability-action">
-                  <p className="bold">{actions['name']}</p>
-                  <p className="ability-action-value">{actions['desc']}</p>
+                <div className="ability-action" key={uniqid()}>
+                  <p className="bold" key={uniqid()}>{actions['name']}</p>
+                  <p className="ability-action-value" key={uniqid()}>{actions['desc']}</p>
                 </div>
               );
             })}
