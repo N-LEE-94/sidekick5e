@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import './statblock.css'
 
 export function StatBlock({ creature }) {
@@ -23,6 +23,51 @@ export function StatBlock({ creature }) {
     return <div className="abl-mod"><p> ({abilityMod})</p></div>
   }};
 
+  // function actionsRender() {
+  //   let actionsArray = creature.actions
+  //   // console.log(actionsArray)
+    
+  //   for (let i = 0; i < actionsArray.length; i++) {
+  //     // let actionName = actionsArray[i]['name']
+  //     // let actionDesc = actionsArray[i]['desc']
+  //     // console.log(actionsArray[i])
+  //     return (
+  //     <div className="action">
+  //       <p className="bold">{actionsArray[i]['name']}</p>
+  //       <p>{actionsArray[i]['desc']}</p>
+  //     </div>
+  //   )}
+  // }
+
+//   let actionsArray = creature.actions
+//   const actionsRender = (array) => {
+//     for (let i = 0; i < array.length; i++) {
+//       return (
+//             <div className="action">
+//               <p className="bold">{array[i]['name']}</p>
+//               <p>{array[i]['desc']}</p>
+//             </div>
+//           )
+// }};
+let actionsVar = creature.actions
+let specialAbilitiesVar = creature.special_abilities
+
+
+
+// iterate(numArr);
+
+//loop through the array
+//map each action name and description to a variable
+//feed variable to the <p></p> elements in the return
+
+
+
+// {Object.keys(creature.skills).map((skill) => {
+//   return (<p className="skill-value">{skill}</p>);
+//   })}
+
+
+
   return (
     <>
       <div className="statContainer">
@@ -38,31 +83,31 @@ export function StatBlock({ creature }) {
             <p className="bold">Armor Class</p>
             <p className="ac-stat">{creature.armor_class}</p>
             {creature.armor_desc ? 
-              <p> ({creature.armor_desc})</p>
-              : null}          
+            <p> ({creature.armor_desc})</p>
+            : null}          
           </div>
           <div className="hp">
             <p className="bold">Hit Points</p>
-              <p className="hp-stat">{creature.hit_points} ({creature.hit_dice})</p>
+            <p className="hp-stat">{creature.hit_points} ({creature.hit_dice})</p>
           </div>
           <div className="speed">
             <p className="bold">Speed </p>
-              <p className="speed-stat">{creature.speed.walk} ft.</p>
-              {creature.speed.fly ? 
-              <p>, fly {creature.speed.fly} ft.</p>
-              : null}
-              {creature.speed.hover ? 
-              <p className="hover"> (hover)</p>
-              : null}
-              {creature.speed.climb ? 
-              <p>, climb {creature.speed.climb} ft.</p>
-              : null}
-              {creature.speed.swim ? 
-              <p>, swim {creature.speed.swim} ft.</p>
-              : null}
-              {creature.speed.burrow ? 
-              <p>, burrow {creature.speed.burrow} ft.</p>
-              : null}
+            <p className="speed-stat">{creature.speed.walk} ft.</p>
+            {creature.speed.fly ? 
+            <p>, fly {creature.speed.fly} ft.</p>
+            : null}
+            {creature.speed.hover ? 
+            <p className="hover"> (hover)</p>
+            : null}
+            {creature.speed.climb ? 
+            <p>, climb {creature.speed.climb} ft.</p>
+            : null}
+            {creature.speed.swim ? 
+            <p>, swim {creature.speed.swim} ft.</p>
+            : null}
+            {creature.speed.burrow ? 
+            <p>, burrow {creature.speed.burrow} ft.</p>
+            : null}
               
           </div>
         </div>
@@ -89,7 +134,8 @@ export function StatBlock({ creature }) {
             creature.intelligence_save ||
             creature.wisdom_save ||
             creature.charisma_save ? 
-            <p className="saving-throws">Saving Throws 
+            <div>
+            <p className="saving-throws">Saving Throws</p> 
               {creature.strength_save ?
               <div className ="save-stat"><p>Str +{creature.strength_save}</p></div>
               : null}
@@ -108,7 +154,7 @@ export function StatBlock({ creature }) {
               {creature.charisma_save ? 
                 <div className ="save-stat"><p>Cha +{creature.charisma_save}</p></div>
               : null}
-            </p>
+              </div>
             : null}
 
             {Object.keys(creature.skills).length !== 0 ? 
@@ -164,14 +210,34 @@ export function StatBlock({ creature }) {
             : null}
         </div>
 
-        <div className="abilities-wrapper">
-          
-        </div>
-
-        <div className="actions-wrapper">
-
-        </div>
+        
+          {creature.special_abilities ?
+            <div className="abilities-wrapper">
+              {Array.from(specialAbilitiesVar).map((abilities) => {
+              return (
+                  <div className="ability-action">
+                    <p className="bold">{abilities['name']}</p>
+                    <p className="ability-action-value">{abilities['desc']}</p>
+                  </div>
+                )})}
+            </div>
+          : null }
+        
+        {creature.actions ?
+        <><p className="actions-header">Actions</p><div className="actions-wrapper">
+            {Array.from(actionsVar).map((actions) => {
+              return (
+                <div className="ability-action">
+                  <p className="bold">{actions['name']}</p>
+                  <p className="ability-action-value">{actions['desc']}</p>
+                </div>
+              );
+            })}
+          </div></>
+        : null}
       </div>
     </>
   );
 };
+
+//function that checks for \n to create line break in Ps.

@@ -113,3 +113,23 @@ p .save-stat {
 .skill-value {
   padding-left: .6rem;
 }
+
+.abilities-wrapper {
+  border-bottom: solid;
+  border-width: 1px;
+  padding-bottom: .5rem;
+}
+.ability-action {
+  display: block;
+  text-align: left;
+}
+
+.ability-action-value {
+  padding-bottom: .7rem;
+  margin-left: .7rem;
+}
+
+.actions-header {
+  font-weight: bold;
+}
+

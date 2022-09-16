@@ -75,7 +75,7 @@ export function DisplayCreature() {
           const isActive = index === activeIndex;
           return (
             <div className="creatureContainer" key={index}>
-              <button className="accordion" key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
+              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
                 {creature.name}
               </button>
               <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
@@ -89,7 +89,7 @@ export function DisplayCreature() {
           const isActive = index === activeIndex;
           return (
             <div className="creatureContainer" key={index}>
-              <button className="accordion" key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
+              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={index+1*1000} onClick={() => {toggleActiveIndex(index); ;}}>
                 {creature.name}
               </button>
               <div className={`${isActive ? "panel" : "noShow"}`} key={index+1*100000}>
