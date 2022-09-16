@@ -134,10 +134,10 @@ let specialAbilitiesVar = creature.special_abilities
             creature.intelligence_save ||
             creature.wisdom_save ||
             creature.charisma_save ? 
-            <div>
+            <div className="save-wrapper">
             <p className="saving-throws">Saving Throws</p> 
               {creature.strength_save ?
-              <div className ="save-stat"><p>Str +{creature.strength_save}</p></div>
+              <p className ="save-stat">Str +{creature.strength_save}</p>
               : null}
               {creature.dexterity_save ? 
                 <div className ="save-stat"><p>Dex +{creature.dexterity_save}</p></div>

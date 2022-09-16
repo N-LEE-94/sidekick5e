@@ -95,9 +95,11 @@ p {
   border-width: 1px;
   padding-bottom: .5rem;
 }
-.saving-throws {
+
+.save-wrapper {
   display: flex;
-  flex-direction: row;
+}
+.saving-throws {
   margin: 0px;
   font-weight: bold;
 }
@@ -106,6 +108,7 @@ p {
   margin-left: .7rem;
 }
 p .save-stat {
+  margin: 0px;
   font-weight: 400;
 }
 
