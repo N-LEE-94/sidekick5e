@@ -13,6 +13,7 @@ p {
 .bold {
   font-weight: bold;
   padding-right: .3rem;
+  white-space: nowrap;
 }
 .value {
   padding-left: .3rem;

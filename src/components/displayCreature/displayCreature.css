@@ -37,3 +37,11 @@
 .noShow {
   display: none;
 }
+
+input {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 40vw;
+  height: 35px;
+  font-size: 1.3rem;
+}
