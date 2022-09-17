@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import NavBar from './components/navbar/Navbar'
 import SelectCreature from './pages/selectCreature/selectCreature'
+import SelectClassLevel from './pages/selectClassLevel/selectClassLevel'
 // import SelectClassLevel from './pages/selectClassLevel/selectClassLevel'
 // import CharacterSheet from './pages/characterSheet/characterSheet'
 
@@ -16,8 +17,8 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/" element={<SelectCreature/>}/>
-          {/* <Route path="selectClassLevel" element={<SelectClassLevel/>}/>
-          <Route path="characterSheet" element={<CharacterSheet/>}/> */}
+          <Route path="selectClassLevel" element={<SelectClassLevel/>}/>
+          {/* <Route path="characterSheet" element={<CharacterSheet/>}/> */}
         </Routes>
       </header>
     </div>

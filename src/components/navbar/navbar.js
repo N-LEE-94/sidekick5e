@@ -6,12 +6,11 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (    
       <div className="nav-bar">
-        <h1>5e Sidekick Creator</h1>
-        <div className="link-div">
-          <Link to="/" className="navbar-link">Select Creature</Link>
+        <Link to="/" className="navbar-link"><h1>5e Sidekick Creator</h1></Link>
+        {/* <div className="link-div">
           <Link to="/selectClassLevel" className="navbar-link">Select Class & Level</Link>
           <Link to="/characterSheet" className="navbar-link">Character Sheet</Link>
-        </div>
+        </div> */}
       </div>
   );
 }

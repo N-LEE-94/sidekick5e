@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import './displayCreature.css';
+import { Link } from "react-router-dom";
 import { StatBlock } from "./StatBlock.js";
 import uniqid from 'uniqid';
+
 
 export function DisplayCreature() {
   const [allCreatures, setAllCreatures] = useState([]);
@@ -65,11 +68,16 @@ export function DisplayCreature() {
           const isActive = index === activeIndex;
           return (
             <div className="creatureContainer" key={uniqid()}>
-              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={uniqid()} onClick={() => {toggleActiveIndex(index); ;}}>
+              <button className="accordion" id={`${isActive ? "selected-accordion" : null}`} key={uniqid()} onClick={() => {toggleActiveIndex(index)}}>
                 {creature.name}
               </button>
               <div className={`${isActive ? "panel" : "noShow"}`} key={uniqid()}>
                 <StatBlock creature={creature}/>
+                <Link to="/selectClassLevel" className="navbar-link">
+                  <button className="select-button" onClick={() => {localStorage.clear(); localStorage.setItem(JSON.stringify(creature), index)}}>
+                    Select this creature
+                  </button>
+                </Link>
               </div>
             </div>
         )

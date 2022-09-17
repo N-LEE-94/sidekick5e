@@ -6,7 +6,7 @@ import { DisplayCreature } from '../../components/displayCreature/displayCreatur
 export default function SelectCreature() {
   return (
     <div className="container">
-        <p>Select a Creature</p>
+        <h2>Select a Creature</h2>
         <DisplayCreature/>
     </div>
   )

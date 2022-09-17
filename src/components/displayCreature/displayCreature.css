@@ -45,3 +45,15 @@ input {
   height: 35px;
   font-size: 1.3rem;
 }
+
+.select-button {
+  width: 25vw;
+  height: 35px;
+  margin-bottom: 0.5rem;
+  background-color: rgb(77, 137, 77);
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  color: white;
+  
+}
