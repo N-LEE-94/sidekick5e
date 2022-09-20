@@ -1,22 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './selectClassLevel.css'
 import { DisplayClass } from '../../components/displayClassLevel/displayClass';
 
 
 export default function SelectClassLevel() {
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState('1');
   const [classType, setClassType] = useState('Warrior');
+  const [profBonus, setProfBonus] = useState('2')
 
   const selectedCreature = JSON.parse(window.localStorage.getItem('selectedCreature'));
 
-  
-  //if level is equal to 5, 6, 7 or 8; profBonus will be assigned to 3
-  //if level is equal to 9, 10, 11 or 12; profBonus will be assigned to 4
-  //if level is equal to 13, 14, 15 or 16; profBonus will be assigned to 5
-  //if level is equal to 17, 18, 19 or 20; profBonus will be assigned to 6
-
-  
-  
+  useEffect(() => {
+    if (level === '1' || level === '2' || level === '3' || level === '4') {setProfBonus('2')}
+    else if (level === '5' || level === '6' || level === '7' || level === '8') {setProfBonus('3')}
+    else if (level === '9' || level === '10' || level === '11' || level === '12') {setProfBonus('4')}
+    else if (level === '13' || level === '14' || level === '15' || level === '16') {setProfBonus('5')}
+    else if (level === '17' || level === '18' || level === '19' || level === '20') {setProfBonus('6')}
+  }, [level]);
 
   return (
     <div className="container">
@@ -65,16 +65,14 @@ export default function SelectClassLevel() {
             <option value="Warrior">Warrior</option>
             {selectedCreature.languages.length >1 ? <option value="Expert">Expert</option> : null}
             {selectedCreature.languages.length >1 ? <option value="Spellcaster">Spellcaster</option> : null}
-            
-            
           </select>
         </div>
         {console.log('level:', level, classType)}
       </div>  
-    
+      <p>Proficiency Bonus: +{profBonus}</p>
       <DisplayClass />
     </div>
   );
 }
 
-// local storage: https://blog.logrocket.com/using-localstorage-react-hooks/
+// on confirm button - set prof bonus to local storage
