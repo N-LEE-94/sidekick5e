@@ -7,6 +7,7 @@ import uniqid from 'uniqid';
 
 
 export function DisplayCreature() {
+  const [isLoading, setIsLoading] = useState(true);
   const [allCreatures, setAllCreatures] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +15,8 @@ export function DisplayCreature() {
   useEffect(() => {
     const headers = {'Accept': 'application/json'}
       async function fetchAll() {
-        let creatureList = []
+        let creatureList = [];
+        // setIsLoading(true)
 
         const crZero = await fetch(`https://api.open5e.com/monsters/?challenge_rating=0&armor_class=&type=&name=&document=&document__slug=`, 
         {headers: headers})
@@ -38,9 +40,12 @@ export function DisplayCreature() {
 
         const sortedCreatureList = [...creatureList].sort((a, b) =>
           a.name > b.name ? 1 : -1);
-        setAllCreatures([...allCreatures, ...sortedCreatureList])
+        setAllCreatures([...allCreatures, ...sortedCreatureList]);
+        
+        if (crZero.status && crEighth.status && crQuarter.status && crHalf.status === 200) {setIsLoading(false)}
       };
-      fetchAll();   
+      fetchAll()
+      
   }, []);
 
   function toggleActiveIndex(index) {
@@ -57,6 +62,10 @@ export function DisplayCreature() {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       
+      <div className="spinner-container">
+        <div className={`${isLoading === true ? "loading-spinner" : "noShow"}`}>
+        </div>
+      </div>
     
       {allCreatures.filter((creature) => {
         if (searchTerm == '') {
@@ -74,8 +83,11 @@ export function DisplayCreature() {
               <div className={`${isActive ? "panel" : "noShow"}`} key={uniqid()}>
                 <StatBlock creature={creature}/>
                 <Link to="/selectClassLevel" className="navbar-link">
-                  <button className="select-button" onClick={() => {localStorage.clear(); localStorage.setItem(JSON.stringify(creature), index)}}>
-                    Select this creature
+                  <button className="select-button" onClick={() => {localStorage.clear('selectedCreature'); localStorage.setItem(
+                    'selectedCreature', 
+                    JSON.stringify(creature)
+                    )}}>
+                    Select Creature
                   </button>
                 </Link>
               </div>
@@ -87,5 +99,5 @@ export function DisplayCreature() {
 
 
 
-// local storage: https://blog.logrocket.com/using-localstorage-react-hooks/
+
 // loading spinner: https://contactmentor.com/how-to-add-loading-spinner-react-js/ 
