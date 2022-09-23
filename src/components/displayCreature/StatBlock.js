@@ -25,8 +25,9 @@ export function StatBlock({ creature }) {
     return <div className="abl-mod" key={uniqid()}><p> ({abilityMod})</p></div>
   }};
 
-let actionsVar = creature.actions
-let specialAbilitiesVar = creature.special_abilities
+  let actionsVar = creature.actions
+  let specialAbilitiesVar = creature.special_abilities
+
 
   return (
     <>
@@ -199,5 +200,3 @@ let specialAbilitiesVar = creature.special_abilities
     </>
   );
 };
-
-//function that checks for \n to create line break in Ps.

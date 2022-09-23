@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 import './displayCreature.css';
 import { Link } from "react-router-dom";
 import { StatBlock } from "./StatBlock.js";
@@ -16,7 +15,6 @@ export function DisplayCreature() {
     const headers = {'Accept': 'application/json'}
       async function fetchAll() {
         let creatureList = [];
-        // setIsLoading(true)
 
         const crZero = await fetch(`https://api.open5e.com/monsters/?challenge_rating=0&armor_class=&type=&name=&document=&document__slug=`, 
         {headers: headers})

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './selectClassLevel.css'
-import { DisplayClass } from '../../components/displayClassLevel/displayClass';
+import { Warrior } from '../../components/classes/warrior';
+import { Spellcaster } from '../../components/classes/spellcaster';
+import { Expert } from '../../components/classes/expert';
 
 
 export default function SelectClassLevel() {
@@ -63,16 +65,24 @@ export default function SelectClassLevel() {
             onChange={(e) => setClassType(e.target.value)}
           >          
             <option value="Warrior">Warrior</option>
-            {selectedCreature.languages.length >1 ? <option value="Expert">Expert</option> : null}
-            {selectedCreature.languages.length >1 ? <option value="Spellcaster">Spellcaster</option> : null}
+            <option value="Expert">Expert</option>
+            <option value="Spellcaster">Spellcaster</option>
           </select>
         </div>
-        {console.log('level:', level, classType)}
       </div>  
       <p>Proficiency Bonus: +{profBonus}</p>
-      <DisplayClass />
+      
+      {classType === 'Warrior' ? <Warrior level={level}/> : null}
+      {classType === 'Expert' ? <Expert level={level}/> : null}
+      {classType === 'Spellcaster' ? <Spellcaster level={level}/> : null}
+      
     </div>
   );
 }
 
 // on confirm button - set prof bonus to local storage
+
+//Class Select - Creatures can only be Expert & Spellcaster if they can speak a language.
+// Create a list of the creature's names that includes a boolean for whether they can speak a language.
+// If they cannot, then the Spellcaster and expert option will not (conditionally) render as an option in the select
+// Also consider a toggle that allows players to disable the language check, to give them the option to ignore the language rule.
