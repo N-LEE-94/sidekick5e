@@ -30,7 +30,8 @@ export default function SelectClassLevel() {
             className="drop-level"
             id="select1"
             value={level}
-            onChange={(e) => setLevel(e.target.value)}
+            onChange={(e) => {setLevel(e.target.value);  
+            localStorage.setItem('level', level)}}
           >
             <option value="1">1</option>
             <option value="2">2</option>
